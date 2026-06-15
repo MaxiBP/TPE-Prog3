@@ -1,3 +1,5 @@
+<!-- markdownlint-disable -->
+
 # Trabajo Práctico Especial - Programación 3
 
 **Cursada 2026**
