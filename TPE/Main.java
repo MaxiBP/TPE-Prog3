@@ -9,7 +9,9 @@ public class Main {
         CSVReader reader = new CSVReader();
 
         Backtracking backtracking = new Backtracking();
+        Greedy greedy = new Greedy();
         
+        System.out.println("\u001B[35m" + "BACKTRACKING"+ "\u001B[0m");
         // backtracking puro - sin poda
         List<Camion> camiones1 = reader.cargarCamiones("TPE\\Camiones.csv");
         List<Paquete> paquetes1 = reader.cargarPaquetes("TPE\\Paquetes.csv");
@@ -30,5 +32,12 @@ public class Main {
         System.out.println("\u001B[32m"+"BACKTRACKING CON PODA Y LISTA ORDENADA"+"\u001B[0m");
         Solucion s3 = backtracking.asignar(camiones3, paquetes3, true, true);
         System.out.println("Estados:"+ s3.getMetrica());
+
+        // Greedy
+        System.out.println("\u001B[35m" + "GREEDY"+ "\u001B[0m");
+        List<Camion> camionesG = reader.cargarCamiones("TPE\\Camiones.csv");
+        List<Paquete> paquetesG = reader.cargarPaquetes("TPE\\Paquetes.csv");
+        Solucion gSolucion = greedy.asignar(camionesG, paquetesG);
+        System.out.println("Estados:"+ gSolucion.getMetrica());
     }
 }

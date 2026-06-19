@@ -16,7 +16,8 @@ public class Backtracking {
     * los camiones disponibles. recorremos recursivamente todos los paquetes y probamos asignarlos a todos los camiones
     * que permitan dicha asignación, creando así soluciones parciales que, al terminar de recorrer todos los paquetes
     * se comparan con la mejor solución encontrada (menor peso acumulado). Para mejorar la eficiencia se implementa
-    * una poda que descarta ramas cuyo peso no asignado acumulado ya es mayor o igual al de la mejor solución. 
+    * una poda que descarta ramas cuyo peso no asignado acumulado ya es mayor o igual al de la mejor solución. También
+    * se implementa un ordenamiento para testear si puede mejorar y cuánto la eficiencia de la poda. 
     */
     public Solucion asignar(List<Camion> camiones,List<Paquete> paquetes, boolean ordenar, boolean podar) {
 
