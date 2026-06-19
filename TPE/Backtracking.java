@@ -36,6 +36,7 @@ public class Backtracking {
 
         // llamamos a backtracking con indice = 0 ==> primer paquete
         backtracking(0,paquetes,camiones,asignacionActual,0);
+        System.out.println("menor peso no asignado: "+ mejorPesoNoAsignado);
 
         return mejorSolucion;
     }

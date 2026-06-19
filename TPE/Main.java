@@ -6,21 +6,29 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-
         CSVReader reader = new CSVReader();
 
-        List<Camion> camiones = reader.cargarCamiones("TPE\\Camiones.csv");
+        Backtracking backtracking = new Backtracking();
+        
+        // backtracking puro - sin poda
+        List<Camion> camiones1 = reader.cargarCamiones("TPE\\Camiones.csv");
+        List<Paquete> paquetes1 = reader.cargarPaquetes("TPE\\Paquetes.csv");
+        System.out.println("\u001B[32m"+"BACKTRACKING PURO - SIN PODA"+"\u001B[0m");
+        Solucion s1 = backtracking.asignar(camiones1, paquetes1, false, false);
+        System.out.println("Estados:"+ s1.getMetrica());
 
-        List<Paquete> paquetes = reader.cargarPaquetes("TPE\\Paquetes.csv");
+        // backtracking con poda - sin ordenar
+        List<Camion> camiones2 = reader.cargarCamiones("TPE\\Camiones.csv");
+        List<Paquete> paquetes2 = reader.cargarPaquetes("TPE\\Paquetes.csv");
+        System.out.println("\u001B[32m"+"BACKTRACKING CON PODA - SIN ORDENAR"+"\u001B[0m");
+        Solucion s2 = backtracking.asignar(camiones2, paquetes2, false, true);
+        System.out.println("Estados:"+ s2.getMetrica());
 
-        System.out.println(
-                "Camiones cargados: "
-                + camiones.size()
-        );
-
-        System.out.println(
-                "Paquetes cargados: "
-                + paquetes.size()
-        );
+        // backtracking con poda y lista ordenada
+        List<Camion> camiones3 = reader.cargarCamiones("TPE\\Camiones.csv");
+        List<Paquete> paquetes3 = reader.cargarPaquetes("TPE\\Paquetes.csv");
+        System.out.println("\u001B[32m"+"BACKTRACKING CON PODA Y LISTA ORDENADA"+"\u001B[0m");
+        Solucion s3 = backtracking.asignar(camiones3, paquetes3, true, true);
+        System.out.println("Estados:"+ s3.getMetrica());
     }
 }
