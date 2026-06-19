@@ -9,6 +9,15 @@ public class Backtracking {
     private long estadosGenerados;
     private boolean poda;
 
+
+    /* 
+    * La estrategia de backtracking (desarrollada en las funciones asignar y backtracking) elegida recorre 
+    * un arbol de decisiones donde cada nivel representa un paquete y cada rama es una posible asignación en
+    * los camiones disponibles. recorremos recursivamente todos los paquetes y probamos asignarlos a todos los camiones
+    * que permitan dicha asignación, creando así soluciones parciales que, al terminar de recorrer todos los paquetes
+    * se comparan con la mejor solución encontrada (menor peso acumulado). Para mejorar la eficiencia se implementa
+    * una poda que descarta ramas cuyo peso no asignado acumulado ya es mayor o igual al de la mejor solución. 
+    */
     public Solucion asignar(List<Camion> camiones,List<Paquete> paquetes, boolean ordenar, boolean podar) {
 
         // el atributo poda sirve para activar o desactivar la poda, para comparar eficiencias de distintas estrategias
