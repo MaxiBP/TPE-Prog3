@@ -14,12 +14,14 @@ public class Camion {
     private List<Paquete> paquetesAsignados;
     
     //constructor
-    public Camion(int id, String patente, boolean refrigerado, int capacidadMaxima, int capacidadDisponible, List<Paquete> paquetesAsignados) {
+    public Camion(int id, String patente, boolean refrigerado, int capacidadMaxima, List<Paquete> paquetesAsignados) {
         this.id = id;
         this.patente = patente;
         this.refrigerado = refrigerado;
         this.capacidadMaxima = capacidadMaxima;
-        this.capacidadDisponible = capacidadDisponible;
+
+        // capacidadDisponible es un atributo creado para no modificar la capacidad maxima
+        this.capacidadDisponible = this.capacidadMaxima;
         this.paquetesAsignados = paquetesAsignados;
     }
     public Camion(Camion otro) {

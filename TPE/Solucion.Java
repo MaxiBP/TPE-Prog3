@@ -1,22 +1,31 @@
 package TPE;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Solucion {
 
-    private List<Camion> camiones;
+    private HashMap<Camion,List<Paquete>> asignaciones;
 
+    
     private int pesoNoAsignado;
-
+    
     private long metrica;
-
-    public Solucion(List<Camion> camiones,int pesoNoAsignado,long metrica) {
-        this.camiones = camiones;
+    
+    public Solucion( HashMap<Camion,List<Paquete>>asignaciones,int pesoNoAsignado,long metrica) {
+        
+        this.asignaciones = asignaciones;
+        
         this.pesoNoAsignado = pesoNoAsignado;
+        
         this.metrica = metrica;
     }
-
-    public void setMetrica(long metrica) {
-        this.metrica = metrica;
+    
+    public int getPesoNoAsignado() {
+        return pesoNoAsignado;
+    }
+    
+    public long getMetrica() {
+        return metrica;
     }
 }

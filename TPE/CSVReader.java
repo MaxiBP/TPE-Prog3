@@ -72,7 +72,7 @@ public class CSVReader {
                 Integer.parseInt(datos[0]),
                 datos[1],
                 datos[2].equals("1"),
-                Integer.parseInt(datos[3]), 0, null
+                Integer.parseInt(datos[3]), null
         );
     }
 }

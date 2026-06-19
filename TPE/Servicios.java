@@ -16,6 +16,7 @@ public class Servicios {
 
 
  
+    
     // Complejidad temporal O(p + c)
     //siendo p la cantidad de paquetes
     //siendo c la cantidad de camiones
@@ -24,58 +25,58 @@ public class Servicios {
         try {
 
             CSVReader reader = new CSVReader();
-
+            
             //o(p)
             List<Paquete> paquetes = reader.cargarPaquetes(pathPaquetes);
-
+            
             //o(c)
             this.camiones =  reader.cargarCamiones(pathCamiones);
-
+            
             //o(1)
             inicializarEstructuras();
-
+            
             //o(p)
             indexarPaquetes(paquetes);
-
+            
         } catch (IOException e) {
-
+            
             throw new RuntimeException(e);
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     private void inicializarEstructuras() {
-
+        
         paquetesPorCodigo = new HashMap<>();
-
+        
         paquetesConAlimentos = new ArrayList<>();
         paquetesSinAlimentos = new ArrayList<>();
-
+        
         paquetesPorUrgencia = new ArrayList[101];
-
+        
         for (int i = 0; i <= 100; i++) {
             paquetesPorUrgencia[i] = new ArrayList<>();
         }
     }
-
+    
     private void indexarPaquetes(List<Paquete> paquetes) {
-
+        
         for (Paquete p : paquetes) {
-
+            
             paquetesPorCodigo.put(p.getCodigo(),p);
-
+            
             if (p.isContieneAlimentos()) {
-             paquetesConAlimentos.add(p);
+                paquetesConAlimentos.add(p);
             } else {
                 paquetesSinAlimentos.add(p);
             }
 
             paquetesPorUrgencia[ p.getUrgencia()].add(p);
         }
-}
-
-
- 
+    }
+    
+    
+    
     // Complejidad temporal O(1)
     // el paquete se almacena en un HashMap por código, 
     // acceder al paquete por el código es un o(1)
@@ -83,7 +84,7 @@ public class Servicios {
         return paquetesPorCodigo.get(codigoPaquete); 
         //HashMap devuelve null si se intenta acceder a una clave no almacenada
     } 
- 
+    
     // Complejidad temporal O(1) 
     // En vez de buscar uno por uno en los paquetes almacenados (O(n) siendo n la cant. de paquetes)
     // llevo dos listas que almacenan todos los paquetes que contienen o no alimentos
@@ -94,8 +95,8 @@ public class Servicios {
         }
         return this.paquetesSinAlimentos;
     } 
- 
-   
+    
+    
     // complejidad temporal o(k)
     // siendo k la cantidad de paquetes copiados
     // si hubiera estado almacenado en una lista normal sería o(p) siendo p la cantidad de paquetes totales
@@ -108,5 +109,8 @@ public class Servicios {
         }
         return resultado; 
     } 
- 
+    
+    public List<Camion> getCamiones() {
+        return camiones;
+    }
 } 
