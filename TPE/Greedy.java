@@ -26,6 +26,7 @@ public class Greedy {
         }
 
         int pesoNoAsignado = 0;
+        int estadosGenerados = 0;
 
         // Por cada paquete buscamos el mejor camión para asignarlo
         for (Paquete paquete : paquetes) {
@@ -35,6 +36,9 @@ public class Greedy {
             int menorEspacioLibre =Integer.MAX_VALUE;
 
             for (Camion camion : camiones) {
+                
+                // tantos estados como candidatos para cada paquete
+                estadosGenerados ++;
 
                 if (camion.puedeTransportar(paquete)) {
 
@@ -64,7 +68,6 @@ public class Greedy {
             }
         }
 
-        System.out.println(pesoNoAsignado);
-        return new Solucion(asignacion,pesoNoAsignado,paquetes.size());
+        return new Solucion(asignacion,pesoNoAsignado,estadosGenerados);
     }
 }

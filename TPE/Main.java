@@ -15,21 +15,21 @@ public class Main {
         // backtracking puro - sin poda
         List<Camion> camiones1 = reader.cargarCamiones("TPE\\Camiones.csv");
         List<Paquete> paquetes1 = reader.cargarPaquetes("TPE\\Paquetes.csv");
-        System.out.println("\u001B[32m"+"BACKTRACKING PURO - SIN PODA"+"\u001B[0m");
+        System.out.println("\u001B[32m"+"Backtracking puro - sin poda"+"\u001B[0m");
         Solucion s1 = backtracking.asignar(camiones1, paquetes1, false, false);
         System.out.println("Estados:"+ s1.getMetrica());
 
         // backtracking con poda - sin ordenar
         List<Camion> camiones2 = reader.cargarCamiones("TPE\\Camiones.csv");
         List<Paquete> paquetes2 = reader.cargarPaquetes("TPE\\Paquetes.csv");
-        System.out.println("\u001B[32m"+"BACKTRACKING CON PODA - SIN ORDENAR"+"\u001B[0m");
+        System.out.println("\u001B[32m"+"Bactracking con poda - sin ordenar"+"\u001B[0m");
         Solucion s2 = backtracking.asignar(camiones2, paquetes2, false, true);
         System.out.println("Estados:"+ s2.getMetrica());
 
         // backtracking con poda y lista ordenada
         List<Camion> camiones3 = reader.cargarCamiones("TPE\\Camiones.csv");
         List<Paquete> paquetes3 = reader.cargarPaquetes("TPE\\Paquetes.csv");
-        System.out.println("\u001B[32m"+"BACKTRACKING CON PODA Y LISTA ORDENADA"+"\u001B[0m");
+        System.out.println("\u001B[32m"+"Backtracking con poda y lista ordenada"+"\u001B[0m");
         Solucion s3 = backtracking.asignar(camiones3, paquetes3, true, true);
         System.out.println("Estados:"+ s3.getMetrica());
 
@@ -38,6 +38,7 @@ public class Main {
         List<Camion> camionesG = reader.cargarCamiones("TPE\\Camiones.csv");
         List<Paquete> paquetesG = reader.cargarPaquetes("TPE\\Paquetes.csv");
         Solucion gSolucion = greedy.asignar(camionesG, paquetesG);
+        System.out.println("Menor Peso no Asignado: "+ gSolucion.getPesoNoAsignado());
         System.out.println("Estados:"+ gSolucion.getMetrica());
     }
 }
